@@ -4,8 +4,8 @@
   "description": "bucos chatbot",
   "main": "server.js",
   "scripts": {
-    "start": "babel-node src/server.js",
-    "dev" : "nodemon --exec npm start"
+    "start": "node --exec babel-node src/server.js",
+    "dev": "nodemon --exec babel-node src/server.js"
  },
   "author": "samurai",
   "license": "ISC",
