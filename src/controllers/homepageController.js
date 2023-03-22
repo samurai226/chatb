@@ -42,7 +42,7 @@ let setUpUserFacebookProfile = (req, res) => {
             }
         ],
         "whitelisted_domains":[
-            "https://www.xpertlab.org",
+            "https://busy-gold-gecko-sock.cyclic.app/",
           ]
     };
     request({
