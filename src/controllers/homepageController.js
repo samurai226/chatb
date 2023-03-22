@@ -15,7 +15,7 @@ let setUpUserFacebookProfile = (req, res) => {
     // Send the HTTP request to the Messenger Platform
     let data = {
         "get_started": {
-            "payload": "<postback_payload>"
+            "payload": "GET_STARTED"
         },
         "persistent_menu": [
             {
@@ -47,7 +47,7 @@ let setUpUserFacebookProfile = (req, res) => {
     };
     request({
         "uri": "https://graph.facebook.com/v7.0/me/messager_profile",
-        "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN },
+        "qs": { "access_token": PAGE_ACCESS_TOKEN },
         "method": "POST",
         "json": data
       }, (err, res, body) => {
