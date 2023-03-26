@@ -115,50 +115,37 @@ function handleMessage(sender_psid, received_message) {
   }
 
 // Handles messaging_postbacks events
-function handlePostback(sender_psid, received_postback) {
+let handlePostback = async (sender_psid, received_postback) => {
     let response;
   
   // Get the payload for the postback
   let payload = received_postback.payload;
 
   // Set the response based on the postback payload
-  if (payload === 'yes') {
-    response = { "text": "Thanks!" }
-  } else if (payload === 'no') {
-    response = { "text": "Oops, try sending another image." }
-  }else if(payload === "GET_STARTED"){
-    response = { "text": "Cool" }
+  switch(payload){
+    case "GET_STARTED":
+      let username = await chatBotServices.getFacebookUsername(sender_psid);
+      await chatBotServices.sendResponseWelcomeNewCustomer(username, sender_psid);
+      response = {"text": `Bienvenue ${username} chez Epicerie BUCOS bio`};
+      break;
+    case "no" :
+      response = {}
+      break;
+    case "yes" :
+        response = {}
+      break;
+    default:
+      console.log("Quelque chose n'a pas fonctioner correctement");
   }
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
 
-}
+};
 
 // Sends response messages via the Send API
 function callSendAPI(sender_psid, response) {
-    // Construct the message body
-    let request_body = {
-      "recipient": {
-        "id": sender_psid
-      },
-      "message": response
-    }
   
-    // Send the HTTP request to the Messenger Platform
-    request({
-      "uri": "https://graph.facebook.com/v7.0/me/messages",
-      "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN },
-      "method": "POST",
-      "json": request_body
-    }, (err, res, body) => {
-      if (!err) {
-        console.log('message sent!')
-      } else {
-        console.error("Unable to send message:" + err);
-      }
-    }); 
   }
-
 module.exports = {
     test: test,
     getWebhook: getWebhook,
