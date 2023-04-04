@@ -24,7 +24,7 @@ let setUpUserFacebookProfile = (req, res) => {
                 "call_to_actions": [
                     {
                         "type": "postback",
-                        "title": "Talk to an agent",
+                        "title": "Parler à un agent",
                         "payload": "CARE_HELP"
                     },
                     {
@@ -34,8 +34,8 @@ let setUpUserFacebookProfile = (req, res) => {
                     },
                     {
                         "type": "web_url",
-                        "title": "Shop now",
-                        "url": "https://www.originalcoastclothing.com/",
+                        "title": "Acheter maintenant",
+                        "url": "https://vepaar.store/epiceriebucosbio",
                         "webview_height_ratio": "full"
                     }
                 ]
