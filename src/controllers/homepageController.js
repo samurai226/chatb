@@ -29,7 +29,7 @@ let setUpUserFacebookProfile = (req, res) => {
                     },
                     {
                         "type": "postback",
-                        "title": "Outfit suggestions",
+                        "title": "Epices suggerer",
                         "payload": "CURATION"
                     },
                     {
